@@ -16,7 +16,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import RequireAdmin from './Pages/Login/Login/RequireAdmin/RequireAdmin';
 import EquipmentDetail from './Pages/Home/EquipmentDetail/EquipmentDetail';
 import About from './Pages/About/About';
-import UpdateEquipment from './Pages/Home/UpdateEquipment/UpdateEquipment';
 // import AddDoctor from './Pages/Dashboard/AddDoctor';
 // import ManageDoctors from './Pages/Dashboard/ManageDoctors';
 // import Payment from './Pages/Dashboard/Payment';
@@ -29,14 +28,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='/equipment/:equipmentId' element={<EquipmentDetail></EquipmentDetail>}></Route>
         <Route path="about" element={<About />} />
-        
-        <Route path="/updateequipment/:id" element=
+
+        {/* <Route path="/updateequipment/:id" element=
           {
             <RequireAuth>
               <UpdateEquipment></UpdateEquipment>
             </RequireAuth>
           }
-        ></Route>
+        ></Route> */}
 
         {/* <Route path="appointment" element={
           <RequireAuth>
