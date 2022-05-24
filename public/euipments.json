@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Mirror Looking Glass",
+        "price": "2300",
+        "minimumOrderQuantity": "10",
+        "availableQuantity": "80",
+        "description": "Zx10r Mirror Looking Glass For Yamaha R15v3 , Gsx-r , Sf , CBR-150, KPR , KTM",
+        "img": "https://bongshal.com/public/uploads/all/Zx10r_Mirror.jpg"
+    },
+    {
+        "name": "Kickstand Foot Side",
+        "price": "700",
+        "minimumOrderQuantity": "10",
+        "availableQuantity": "100",
+        "description": "Universal Heavy Duty CNC Aluminum Alloy Adjustable Kickstand Foot Side Stand for Motorcycle, Scooty Bike Side Stand for Support Parking",
+        "img": "https://bongshal.com/public/uploads/all/9JuFYQgco4TVCEtxhQobMF8i1xSvhhTGA2l86djZ.png"
+    },
+    {
+        "name": "Cylinder Block",
+        "price": "20000",
+        "minimumOrderQuantity": "2",
+        "availableQuantity": "10",
+        "description": "BRT RACING BLOCK (63MM) YAMAHA N-MAX NVX R15 VVA V3 Y16 WR155",
+        "img": "https://bongshal.com/public/uploads/all/aZoMcpdAukH93vIqVwSWRLyiuZJ641AyIaNwc5YP.jpg"
+    },
+    {
+        "name": "Front disc",
+        "price": "9000",
+        "minimumOrderQuantity": "5",
+        "availableQuantity": "30",
+        "description": "BPro 300 mm front disc for Indo / Thai CBR / Hornet",
+        "img": "https://bongshal.com/public/uploads/all/2Tk77ayT9dhalBn7A2TIcCWuAQzrb2YGTTGkzDr5.jpg"
+    },
+    {
+        "name": "Tank Pack",
+        "price": "3200",
+        "minimumOrderQuantity": "5",
+        "availableQuantity": "20",
+        "description": "RHINOWALK 20 Liter Tank Pack Waterproof",
+        "img": "https://bongshal.com/public/uploads/all/KuThOIFN8M1cAk6YtrZWhsIpnuu9eeA02vb7jIaT.jpg"
+    },
+    {
+        "name": "Shell Advance",
+        "price": "800",
+        "minimumOrderQuantity": "10",
+        "availableQuantity": "100",
+        "description": "Fully Synthetic Motorcycle 4 Stroke engine oil Shell Advance 4T Ultra with R.C.E Technology is a unique, fully synthetic lubricant designed to provide Shell’s ultimate engine protection",
+        "img": "https://bongshal.com/public/uploads/all/ppg69EssdYeGiNMbJ9iAdnGYU0Cj85K60XZFMCq6.jpg"
+    }
+]
