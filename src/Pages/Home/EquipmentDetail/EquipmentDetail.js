@@ -1,28 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading/Loading';
-// import ManageInventorySection from '../ManageInventorySection/ManageInventorySection'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const EquipmentDetail = () => {
 
-
-    // const { id } = useParams();
+    const [user, loading, error] = useAuthState(auth);
     const [number1, setNumber1] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [total, setTotal] = useState(number1 + number2);
 
-
-
     const { equipmentId } = useParams();
-    // const [equipment, setEquipment] = useState({});
-
-    // useEffect(() => {
-    //     const url = `http://localhost:5000/equipment/${equipmentId}`;
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then(data => setEquipment(data));
-    // }, [])
 
     const { isLoading, refetch, data: equipment } = useQuery(['equipment', equipmentId], () =>
         fetch(`http://localhost:5000/equipment/${equipmentId}`)
@@ -30,17 +21,6 @@ const EquipmentDetail = () => {
     )
     if (isLoading) return <Loading></Loading>
 
-
-
-
-
-
-
-    // const { isLoading2, refetch2, data: user } = useQuery(['equipment', id], () =>
-    //     fetch(`http://localhost:5000/equipment/${id}`)
-    //         .then(res => res.json())
-    // )
-    // if (isLoading2) return <Loading></Loading>
 
 
     const handleUpdateUser = event => {
@@ -64,11 +44,12 @@ const EquipmentDetail = () => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                alert('Users added successfully');
+                toast('Items added successfully');
                 event.target.reset();
+                refetch();
             })
             .catch((error) => {
-                console.error('Error:', error);
+                toast('Error:', error);
             });
 
     }
@@ -79,13 +60,62 @@ const EquipmentDetail = () => {
 
 
 
+    const totalPrice = parseInt(total) * parseInt(equipment.price);
+
+
+
+
+    const handleBooking = event => {
+        event.preventDefault();
+
+        // {2} Booking data for sending to DB
+        const booking = {
+            user: user.displayName,
+            email: user.email,
+            itemName: equipment.name,
+            price: totalPrice,
+            quantity: total,
+            phone: event.target.phone.value,
+            address: event.target.address.value
+        } 
+
+        fetch('http://localhost:5000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(response => response.json())
+            .then(data => {
+
+                if (data.success) {
+                    toast(`Congratulations, Successfully Purchased`);
+                }
+                else {
+                    toast.error(`Already Purchased. Wait for Shipment`);
+                }
+
+                refetch();
+
+            })
+        // {2} Booking data for sending to DB //*********** END */
+
+
+    }
+
+
+
 
 
 
 
 
     return (
-        <div className='marginTop'>
+        <div>
+
+
+
             <div className='d-flex'>
                 <div className='equipment '>
                     <img className='w-50 img-fluid' src={equipment.img} alt="" />
@@ -100,89 +130,98 @@ const EquipmentDetail = () => {
                     <p><small><span className='text-warning'>Minimum Order : </span>{equipment.minimumOrderQuantity}</small></p>
                     <p><small><span className='text-warning'>Available Quantity : </span>{equipment.availableQuantity}</small></p>
 
-                    <Link to={`/checkout/${equipmentId}`}>
+                    {/* <Link to={`/checkout/${equipmentId}`}>
                         <button className='btn btn-secondary'>Stock Equipment</button>
-                    </Link>
+                    </Link> */}
 
-    
+
 
 
 
                 </div>
             </div>
-            {/* <div className='mt-5'>
-                <ManageInventorySection></ManageInventorySection>               () => addition(equipment.minimumOrderQuantity)
-            </div> */}
+
+
+            <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
+
+                <input type="text" name="name" disabled value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
+                <input type="email" name="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
+
+
+                <input type="text" name="moq" placeholder='Total Price'  value={ totalPrice || ''} className="input input-bordered w-full max-w-xs" />
+
+                <input type="text" name="quantity" placeholder='Total Quantity' value={ total || ''} className="input input-bordered w-full max-w-xs" />
+               
+                <input type="text" name="phone" placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
+                <input type="text" name="address" placeholder="Address" className="input input-bordered w-full max-w-xs" />
+
+                
+
+                {
+                        total >= equipment.minimumOrderQuantity && total <= equipment.availableQuantity
+                            ?
+                            <input type="submit" value="Purchase" className="btn btn-secondary text-white w-full max-w-xs" />
+                            :
+                            <input disabled type="submit" value="Purchase" className="btn btn-secondary text-white w-full max-w-xs" />
+                    }
+
+            </form>
 
 
 
 
 
-            <div className='marginTop mx-auto text-center bg-secondary w-75 p-5'>
-                <h2 className='mb-5'>Update Item</h2>
+            {/********************************* Update your Order Quantity Here! **************************************/}
+
+            <div className='marginTop mx-auto text-center bg-secondary w-75 p-5 mt-5'>
+                <h2 className='mb-5 text-5xl text-accent'>Update your Order Quantity Here!</h2>
 
                 <form className='mx-auto' onSubmit={handleUpdateUser}>
 
-                    {/* <input className='w-100 mb-3' type="text" name='minimumOrderQuantity' placeholder='Minimum Order Quantity' required />
-                <br></br> */}
-                    {/* <input className='w-100 mb-3' type="text" name='availableQuantity' placeholder='Available Quantity' required />
-                <br></br> */}
-
                     {
-                        total > equipment.minimumOrderQuantity && total <= equipment.availableQuantity
+                        total >= equipment.minimumOrderQuantity && total <= equipment.availableQuantity
                             ?
-                            <input className='btn btn-warning btn-lg fw-bold btn-gradient' type="submit" value='Update User' />
+                            <input className='btn btn-warning btn-lg fw-bold btn-gradient' type="submit" value='Update Quantity' />
                             :
-                            <input className='btn btn-warning btn-lg fw-bold btn-gradient' type="submit" value='Update User' disabled />
+                            <input className='btn btn-warning btn-lg fw-bold btn-gradient' type="submit" value='Update Quantity' disabled />
                     }
 
                 </form>
 
 
-                {/* <div>
-                <button className='btn btn-primary mt-4 mr-5' onClick={inc} >+</button>
-                <span>{count}</span>
-                <button className='btn btn-warning ml-5' onClick={dec}>-</button>
-            </div> */}
-
-
                 <div>
-                    <h1>Adding Two Numbers</h1>
-
-                    <div className="number-inputs">
+                    <div className="number-inputs mt-4">
                         <input
                             type="number"
                             value={number1}
                             onChange={e => setNumber1(+e.target.value)}
                             placeholder="0"
+                            className='mr-3 p-2'
                         />
                         <input
                             type="number"
                             value={number2}
                             onChange={e => setNumber2(+e.target.value)}
                             placeholder="0"
+                            className='p-2'
                         />
                     </div>
 
 
 
-                    <h2>
+                    <h2 className='mt-2'>
                         {
-                            total > equipment.minimumOrderQuantity && total <= equipment.availableQuantity
+                            total >= equipment.minimumOrderQuantity && total <= equipment.availableQuantity
                                 ?
-                                total
+                                <span className='text-blue-600'>Total : {total} Items Selected. Now, Click on Update Quantity</span>
                                 :
-                                'Please Input the Available Quantity'
+                                <span className='text-red-700'>Total : Please Check the Minimum Order & Available Quantity</span>
                         }
                     </h2>
-                    <button className='btn btn-sm fw-bold btn-gradient mt-3' onClick={calculateTotal}>Add Them!</button>
+                    <button className='btn btn-sm fw-bold btn-gradient mt-3' onClick={calculateTotal}>Add Item</button>
                 </div>
 
             </div>
-
-
-
-
 
         </div>
     );
