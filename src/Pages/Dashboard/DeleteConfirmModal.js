@@ -12,7 +12,7 @@ const DeleteConfirmModal = ({ deletingDoctor, refetch, setDeletingDoctor }) => {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
-        })
+        }) 
             .then(res => res.json())
             .then(data => {
                 console.log(data);

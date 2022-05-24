@@ -9,18 +9,19 @@ import Registration from './Pages/Login/Registration/Registration'
 import RequireAuth from './Pages/Login/Login/RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import Dashboard from './Pages/Dashboard/Dashboard';
-// import MyAppointments from './Pages/Dashboard/MyAppointments';
-// import MyReview from './Pages/Dashboard/MyReview';
-// import Users from './Pages/Dashboard/Users';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyAppointments from './Pages/Dashboard/MyEquipments';
+import MyReview from './Pages/Dashboard/MyReview';
+import Users from './Pages/Dashboard/Users';
 import RequireAdmin from './Pages/Login/Login/RequireAdmin/RequireAdmin';
 import EquipmentDetail from './Pages/Home/EquipmentDetail/EquipmentDetail';
 import About from './Pages/About/About';
-// import AddDoctor from './Pages/Dashboard/AddDoctor';
-// import ManageDoctors from './Pages/Dashboard/ManageDoctors';
-// import Payment from './Pages/Dashboard/Payment';
-
+import AddDoctor from './Pages/Dashboard/AddDoctor';
+import ManageDoctors from './Pages/Dashboard/ManageDoctors';
+import Payment from './Pages/Dashboard/Payment';
+ 
 function App() {
+  
   return (
     <div className='max-w-7xl mx-auto px-12'>
       <Navbar></Navbar>
@@ -43,7 +44,12 @@ function App() {
           </RequireAuth>
         } /> */}
 
-        {/* <Route path="dashboard" element={
+
+
+
+
+
+        <Route path="dashboard" element={
           <RequireAuth>
             <Dashboard />
           </RequireAuth>
@@ -77,7 +83,11 @@ function App() {
 
           }></Route>
 
-        </Route> */}
+        </Route>
+
+
+
+
 
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Registration />} />

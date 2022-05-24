@@ -18,7 +18,7 @@ const Dashboard = () => {
 
                 <Outlet></Outlet>
 
-
+ 
 
             </div>
             <div className="drawer-side">

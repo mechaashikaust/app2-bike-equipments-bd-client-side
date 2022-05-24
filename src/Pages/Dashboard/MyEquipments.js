@@ -4,10 +4,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
-const MyAppointments = () => {
+const MyEquipments = () => {
 
 
-    const [appointments, setAppointments] = useState([]);
+    const [myequipments, setMyequipments] = useState([]);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const MyAppointments = () => {
 
             // {4} My Appointemnts with verifying JWT
 
-            fetch(`http://localhost:5000/booking?patient=${user.email}`, {
+            fetch(`http://localhost:5000/booking?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -35,14 +35,16 @@ const MyAppointments = () => {
                 })
                 .then(data => {
 
-                    setAppointments(data)
+                    setMyequipments(data)
                 });
         }
     }, [user]);
 
+    console.log(myequipments);
+
     return (
         <div>
-            <h2>MyAppointments: {appointments.length}</h2>
+            <h2>MyAppointments: {myequipments.length}</h2>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -51,28 +53,34 @@ const MyAppointments = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Treatment</th>
+                            <th>Email</th>
+                            <th>Price</th>
+
                             <th>Payment</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            appointments.map((appointment, index) =>
-                                <tr key={appointment._id}>
+                            myequipments.map((myequipment, index) =>
+                                <tr key={myequipment._id}>
                                     <th>{index + 1}</th>
-                                    <td>{appointment.patientName}</td>
-                                    <td>{appointment.date}</td>
-                                    <td>{appointment.slot}</td>
-                                    <td>{appointment.treatment}</td>
+                                    <td>{myequipment.user}</td>
+                                    <td>{myequipment.email}</td>
+                                    <td>{myequipment.price}</td>
 
-                                    <td>{(appointment.price && !appointment.paid) && <Link to={`/dashboard/payment/${appointment._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}</td>
 
-                                    <td>{(appointment.price && appointment.paid) && <div>
-                                        <p><span className='text-success'>Paid</span></p>
-                                        <p>Transaction id: <span className='text-success'>{appointment.transactionId}</span></p>
-                                    </div>}</td>
+                                    <td>
+                                        {(myequipment.price && !myequipment.paid) && <Link to={`/dashboard/payment/${myequipment._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
+
+                                        {(myequipment.price && myequipment.paid) && <div>
+                                            <p><span className='text-success'>Paid</span></p>
+                                            <p>Transaction id: <span className='text-success'>{myequipment.transactionId}</span></p>
+                                        </div>}
+
+                                    </td>
+
+                                    <td><button>Delete</button></td>
 
                                 </tr>
                             )
@@ -86,4 +94,4 @@ const MyAppointments = () => {
     );
 };
 
-export default MyAppointments;
+export default MyEquipments;

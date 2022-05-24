@@ -23,7 +23,7 @@ const UsersTable = ({ user, index, refetch }) => {
             })
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    refetch();
+                    refetch(); 
                     toast.success('Successfully made an Admin');
                 }
             })

@@ -12,7 +12,7 @@ const DoctorsTable = ({ doctor, index, refetch, setDeletingDoctor }) => {
                     <img src={img} alt={name} />
                 </div>
             </div></td>
-
+ 
             <td>{name}</td>
 
             <td>{specialty}</td>

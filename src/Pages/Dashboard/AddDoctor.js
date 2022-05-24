@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading/Loading';
 
-const AddDoctor = () => {
+const AddDoctor = () => { 
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 

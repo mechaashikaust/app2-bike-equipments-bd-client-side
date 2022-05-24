@@ -14,7 +14,7 @@ const Users = () => {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json())
+            .then(res => res.json()) 
     )
     if (isLoading) return <Loading></Loading>
 
