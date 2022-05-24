@@ -52,13 +52,28 @@ const EquipmentDetail = () => {
                 toast('Error:', error);
             });
 
+
     }
 
-    function calculateTotal() {
+    const calculateTotal = () => {
         setTotal(number1 + number2);
+
+        // // if(parseInt(total) > parseInt(equipment.minimumOrderQuantity) && parseInt(total) < parseInt(equipment.availableQuantity)){
+        // //     toast.success('You can add now');
+        // // }
+
+        // if (parseInt(total) + parseInt(equipment.minimumOrderQuantity) < parseInt(equipment.minimumOrderQuantity) + parseInt(equipment.minimumOrderQuantity)) {
+        //     toast.error(" Have a look on Minimum Order");
+        // }
+        // else{
+        //     toast.success("You can add now");
+        // }
+        // // if (parseInt(total) > parseInt(equipment.availableQuantity) - 2) {
+        // //     toast.error(" Have a look on Available Quantity")
+        // // }
     }
 
-
+    console.log(parseInt(total) + parseInt(equipment.minimumOrderQuantity) , parseInt(equipment.minimumOrderQuantity) + parseInt(equipment.minimumOrderQuantity),parseInt(equipment.availableQuantity) );
 
     const totalPrice = parseInt(total) * parseInt(equipment.price);
 
@@ -77,7 +92,7 @@ const EquipmentDetail = () => {
             quantity: total,
             phone: event.target.phone.value,
             address: event.target.address.value
-        } 
+        }
 
         fetch('http://localhost:5000/booking', {
             method: 'POST',
@@ -105,6 +120,7 @@ const EquipmentDetail = () => {
     }
 
 
+    // total >= equipment.minimumOrderQuantity && total <= equipment.availableQuantity
 
 
 
@@ -148,22 +164,22 @@ const EquipmentDetail = () => {
                 <input type="email" name="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
 
 
-                <input type="text" name="moq" placeholder='Total Price'  value={ totalPrice || ''} className="input input-bordered w-full max-w-xs" />
+                <input type="text" name="moq" placeholder='Total Price' value={totalPrice || ''} className="input input-bordered w-full max-w-xs" />
 
-                <input type="text" name="quantity" placeholder='Total Quantity' value={ total || ''} className="input input-bordered w-full max-w-xs" />
-               
+                <input type="text" name="quantity" placeholder='Total Quantity' value={total || ''} className="input input-bordered w-full max-w-xs" />
+
                 <input type="text" name="phone" placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
                 <input type="text" name="address" placeholder="Address" className="input input-bordered w-full max-w-xs" />
 
-                
+
 
                 {
-                        total >= equipment.minimumOrderQuantity && total <= equipment.availableQuantity
-                            ?
-                            <input type="submit" value="Purchase" className="btn btn-secondary text-white w-full max-w-xs" />
-                            :
-                            <input disabled type="submit" value="Purchase" className="btn btn-secondary text-white w-full max-w-xs" />
-                    }
+                    total >= equipment.minimumOrderQuantity && total <= equipment.availableQuantity
+                        ?
+                        <input type="submit" value="Purchase" className="btn btn-secondary text-white w-full max-w-xs" />
+                        :
+                        <input disabled type="submit" value="Purchase" className="btn btn-secondary text-white w-full max-w-xs" />
+                }
 
             </form>
 
@@ -218,6 +234,7 @@ const EquipmentDetail = () => {
                                 <span className='text-red-700'>Total : Please Check the Minimum Order & Available Quantity</span>
                         }
                     </h2>
+
                     <button className='btn btn-sm fw-bold btn-gradient mt-3' onClick={calculateTotal}>Add Item</button>
                 </div>
 
