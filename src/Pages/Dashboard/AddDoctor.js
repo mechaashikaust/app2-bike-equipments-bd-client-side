@@ -10,7 +10,7 @@ const AddDoctor = () => {
 
     // {8} Add Doctors data getting
 
-    const { data: services, isLoading, } = useQuery('services', () => fetch('http://localhost:5000/service')
+    const { data: equipments, isLoading, } = useQuery('equipments', () => fetch('http://localhost:5000/equipment')
         .then(res => res.json())
     )
 
@@ -43,30 +43,32 @@ const AddDoctor = () => {
             .then(result => {
                 if (result.success) {
                     const img = result.data.url;
-                    const doctor = {
+                    const equipment2 = {
                         name: data.name,
-                        email: data.email,
-                        specialty: data.specialty,
+                        price: data.price,
+                        minimumOrderQuantity: data.minimumOrderQuantity,
+                        availableQuantity: data.availableQuantity,
+                        description: data.description,
                         img: img
                     }
 
                     // Send to your DB
-                    fetch('http://localhost:5000/doctor', {
+                    fetch('http://localhost:5000/equipment', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
                             authorization: `Bearer ${localStorage.getItem('accessToken')}`
                         },
-                        body: JSON.stringify(doctor)
+                        body: JSON.stringify(equipment2)
                     })
                         .then(res => res.json())
                         .then(inserted => {
                             if (inserted.insertedId) {
-                                toast.success('Doctors Added Successfully');
+                                toast.success('Equipment Added Successfully');
                                 reset();
                             }
                             else {
-                                toast.error('Failed to Add Doctor');
+                                toast.error('Failed to Add Equipment');
                             }
                         })
                 }
@@ -78,82 +80,134 @@ const AddDoctor = () => {
 
     return (
         <div>
-            <h2 className='text-2xl'>Add a new Doctor</h2>
+            <h2 className='text-2xl'>Add a new User</h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="form-control w-full max-w-xs">
 
-                    {/***************Name INPUT FIELD START*****Daijy + React Form************/}
+
+
+                    {/***************Name INPUT FIELD START*****************/}
                     <label className="label">
-                        <span className="label-text">Your Name</span>
+                        <span className="label-text">Name</span>
+
+                    </label>
+
+                    <select {...register('name')} className="input input-bordered select w-full max-w-xs">
+                        {
+                            equipments.map(equipment => <option
+                                key={equipment._id}
+                                value={equipment.name}
+                            >{equipment.name}</option>)
+                        }
+
+                    </select>
+
+                    {/***************Name INPUT FIELD END*/}
+
+
+                    
+                    {/***************Price INPUT FIELD START*****Daijy + React Form************/}
+                    <label className="label">
+                        <span className="label-text">Price</span>
+
+                    </label>
+                    <input
+
+                        type="number"
+                        placeholder="Price"
+                        className="input input-bordered w-full max-w-xs"
+                        {...register("price", {
+                            required: {
+                                value: true,
+                                message: 'Price is Required'
+                            }
+                        }
+                        )}
+
+                    />
+                    <label>
+                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
+                    </label>
+                    {/***************Price INPUT FIELD END*/}
+
+
+                    {/***************Minimum Order Quantity INPUT FIELD START*****Daijy + React Form************/}
+                    <label className="label">
+                        <span className="label-text">Minimum Order Quantity</span>
+
+                    </label>
+                    <input
+
+                        type="number"
+                        placeholder="Minimum Order Quantity"
+                        className="input input-bordered w-full max-w-xs"
+                        {...register("minimumOrderQuantity", {
+                            required: {
+                                value: true,
+                                message: 'Minimum Order Quantity is Required'
+                            }
+                        }
+                        )}
+
+                    />
+                    <label>
+                        {errors.minimumOrderQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.minimumOrderQuantity.message}</span>}
+                    </label>
+                    {/***************Minimum Order Quantity INPUT FIELD END*/}
+                   
+                    {/***************Available Order Quantity INPUT FIELD START*****Daijy + React Form************/}
+                    <label className="label">
+                        <span className="label-text">Available Quantity</span>
+
+                    </label>
+                    <input
+
+                        type="number"
+                        placeholder="Available Order Quantity"
+                        className="input input-bordered w-full max-w-xs"
+                        {...register("availableQuantity", {
+                            required: {
+                                value: true,
+                                message: 'Available Quantity is Required'
+                            }
+                        }
+                        )}
+
+                    />
+                    <label>
+                        {errors.availableQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.availableQuantity.message}</span>}
+                        {/* {errors.availableQuantity?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.availableQuantity.message}</span>} */}
+                    </label>
+                    {/***************Available Order Quantity INPUT FIELD END*/}
+
+
+                   
+                    {/***************Description INPUT FIELD START*****Daijy + React Form************/}
+                    <label className="label">
+                        <span className="label-text">Description</span>
 
                     </label>
                     <input
 
                         type="text"
-                        placeholder="Your Name"
+                        placeholder="description"
                         className="input input-bordered w-full max-w-xs"
-                        {...register("name", {
+                        {...register("description", {
                             required: {
                                 value: true,
-                                message: 'Name is Required'
+                                message: 'Description is Required'
                             }
                         }
                         )}
 
                     />
                     <label>
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
                     </label>
-                    {/***************Name INPUT FIELD END*/}
+                    {/***************Description INPUT FIELD END*/}
 
-                    {/***************EMAIL INPUT FIELD START*****Daijy + React Form************/}
-                    <label className="label">
-                        <span className="label-text">Email</span>
-
-                    </label>
-                    <input
-
-                        type="email"
-                        placeholder="Your Email"
-                        className="input input-bordered w-full max-w-xs"
-                        {...register("email", {
-                            required: {
-                                value: true,
-                                message: 'Email is Required'
-                            },
-                            pattern: {
-                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                message: 'Provide a valid Email'
-                            }
-                        }
-                        )}
-
-                    />
-                    <label>
-                        {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                        {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                    </label>
-                    {/***************EMAIL INPUT FIELD END*/}
-
-                    {/***************Specialty INPUT FIELD START*****************/}
-                    <label className="label">
-                        <span className="label-text">Specialty</span>
-
-                    </label>
-
-                    <select {...register('specialty')} className="input input-bordered select w-full max-w-xs">
-                        {
-                            services.map(service => <option
-                                key={service._id}
-                                value={service.name}
-                            >{service.name}</option>)
-                        }
-
-                    </select>
-
-                    {/***************Specialty INPUT FIELD END*/}
 
                     {/***************Photo INPUT FIELD START*****Daijy + React Form************/}
                     <label className="label">
