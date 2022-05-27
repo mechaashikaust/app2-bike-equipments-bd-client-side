@@ -1,7 +1,7 @@
 import React from 'react';
 
-const DoctorsTable = ({ equipment, index, refetch, setDeletingEquipment }) => {
-    const { name, price , img } = equipment;
+const EquipmentsTable = ({ equipment, index, refetch, setDeletingEquipment }) => {
+    const { name, price, img } = equipment;
 
     return (
         <tr>
@@ -12,7 +12,7 @@ const DoctorsTable = ({ equipment, index, refetch, setDeletingEquipment }) => {
                     <img src={img} alt={name} />
                 </div>
             </div></td>
- 
+
             <td>{name}</td>
 
             <td>{price}</td>
@@ -22,7 +22,7 @@ const DoctorsTable = ({ equipment, index, refetch, setDeletingEquipment }) => {
             </td>
 
         </tr>
-    );  
+    );
 };
 
-export default DoctorsTable;
+export default EquipmentsTable;

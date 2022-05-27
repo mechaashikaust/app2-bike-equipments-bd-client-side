@@ -17,7 +17,7 @@ import RequireAdmin from './Pages/Login/Login/RequireAdmin/RequireAdmin';
 import EquipmentDetail from './Pages/Home/EquipmentDetail/EquipmentDetail';
 import About from './Pages/About/About';
 import AddDoctor from './Pages/Dashboard/AddDoctor';
-import ManageDoctors from './Pages/Dashboard/ManageDoctors';
+import ManageEquipments from './Pages/Dashboard/ManageEquipments';
 import Payment from './Pages/Dashboard/Payment';
  
 function App() {
@@ -78,7 +78,7 @@ function App() {
           <Route path='manageDoctor' element={
 
             <RequireAdmin>
-              <ManageDoctors></ManageDoctors>
+              <ManageEquipments></ManageEquipments>
             </RequireAdmin>
 
           }></Route>

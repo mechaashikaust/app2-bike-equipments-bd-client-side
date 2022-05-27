@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import DeleteConfirmModalMyEquipments from './DeleteConfirmModalMyEquipments';
 
 const MyEquipments = () => {
 
 
     const [myequipments, setMyequipments] = useState([]);
+    const [deletingEquipment, setDeletingEquipment] = useState(null);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -35,12 +37,23 @@ const MyEquipments = () => {
                 })
                 .then(data => {
 
-                    setMyequipments(data)
+                    setMyequipments(data);
                 });
         }
     }, [user]);
 
-    console.log(myequipments);
+
+    // const { data: equipments, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/equipment', {
+    //     headers: {
+    //         authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    //     }
+    // }).then(res => res.json()));
+
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
+
+    // console.log(myequipments);
 
     return (
         <div>
@@ -80,11 +93,22 @@ const MyEquipments = () => {
 
                                     </td>
 
-                                    <td><button>Delete</button></td>
+                                    <td>{
+                                        (myequipment.paid)
+                                            ?
+                                            ''
+                                            :
+                                            <label onClick={() => setDeletingEquipment(myequipment)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-error">Delete</label>
+                                    }</td>
 
                                 </tr>
                             )
                         }
+                        {deletingEquipment && <DeleteConfirmModalMyEquipments
+                            deletingEquipment={deletingEquipment}
+                           
+                            setDeletingEquipment={setDeletingEquipment}
+                        ></DeleteConfirmModalMyEquipments>}
 
                     </tbody>
                 </table>

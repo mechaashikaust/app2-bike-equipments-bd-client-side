@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import useTotalitems from '../../hooks/useTotalitems';
 import Loading from '../Shared/Loading/Loading';
-import DeleteConfirmModal from './DeleteConfirmModal';
-import DoctorsTable from './DoctorsTable'
+import DeleteConfirmModalManageEquipments from './DeleteConfirmModalManageEquipments';
+import EquipmentsTable from './EquipmentsTable'
 
-const ManageDoctors = () => {
+const ManageEquipments = () => {
 
     // const [users] = useTotalitems();
 
@@ -13,18 +13,18 @@ const ManageDoctors = () => {
 
     // {10} Getting all Doctors 
 
-    const { data: equipments, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/equipment', {
+    const { data: equipments, isLoading, refetch } = useQuery('equipments', () => fetch('http://localhost:5000/equipment', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
-    }).then(res => res.json())); 
+    }).then(res => res.json()));
 
     if (isLoading) {
         return <Loading></Loading>
     }
     // console.log(users);
 
-    
+
     return (
         <div>
 
@@ -43,24 +43,23 @@ const ManageDoctors = () => {
                     </thead>
                     <tbody>
                         {
-                            equipments.map((equipment, index) => <DoctorsTable
+                            equipments.map((equipment, index) => <EquipmentsTable
                                 key={equipment._id}
                                 equipment={equipment}
                                 index={index}
                                 refetch={refetch}
                                 setDeletingEquipment={setDeletingEquipment}
-                            ></DoctorsTable>)
+                            ></EquipmentsTable>)
                         }
                     </tbody>
                 </table>
             </div>
 
-            {deletingEquipment && <DeleteConfirmModal
+            {deletingEquipment && <DeleteConfirmModalManageEquipments
                 deletingEquipment={deletingEquipment}
                 refetch={refetch}
                 setDeletingEquipment={setDeletingEquipment}
-                equipments={equipments}
-            ></DeleteConfirmModal>}
+            ></DeleteConfirmModalManageEquipments>}
 
 
         </div>
@@ -68,4 +67,4 @@ const ManageDoctors = () => {
     );
 };
 
-export default ManageDoctors;
+export default ManageEquipments;
