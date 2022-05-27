@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading/Loading';
 import UsersTable from './UsersTable';
 
 const Users = () => {
-
+ 
 
     // {5} get All Users
     const { isLoading, refetch, data: users } = useQuery(['users'], () =>

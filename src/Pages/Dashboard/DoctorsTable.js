@@ -1,7 +1,7 @@
 import React from 'react';
 
-const DoctorsTable = ({ doctor, index, refetch, setDeletingDoctor }) => {
-    const { name, specialty, img } = doctor;
+const DoctorsTable = ({ equipment, index, refetch, setDeletingEquipment }) => {
+    const { name, price , img } = equipment;
 
     return (
         <tr>
@@ -15,10 +15,10 @@ const DoctorsTable = ({ doctor, index, refetch, setDeletingDoctor }) => {
  
             <td>{name}</td>
 
-            <td>{specialty}</td>
+            <td>{price}</td>
 
             <td>
-                <label onClick={() => setDeletingDoctor(doctor)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-error">Delete</label>
+                <label onClick={() => setDeletingEquipment(equipment)} htmlFor="delete-confirm-modal" className="btn btn-xs btn-error">Delete</label>
             </td>
 
         </tr>

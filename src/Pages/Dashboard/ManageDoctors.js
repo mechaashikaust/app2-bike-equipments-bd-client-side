@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import useTotalitems from '../../hooks/useTotalitems';
 import Loading from '../Shared/Loading/Loading';
 import DeleteConfirmModal from './DeleteConfirmModal';
 import DoctorsTable from './DoctorsTable'
 
 const ManageDoctors = () => {
 
-    const [deletingDoctor, setDeletingDoctor] = useState(null);
+    // const [users] = useTotalitems();
+
+    const [deletingEquipment, setDeletingEquipment] = useState(null);
 
     // {10} Getting all Doctors 
 
-    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/doctor', {
+    const { data: equipments, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/equipment', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -19,41 +22,44 @@ const ManageDoctors = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+    // console.log(users);
 
+    
     return (
         <div>
 
-            <h2 className="text-2xl">Manage Doctors: {doctors.length}</h2>
+            <h2 className="text-2xl">Manage Doctors: {equipments.length}</h2>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Avatar</th>
+                            <th>Image</th>
                             <th>Name</th>
-                            <th>Specialty</th>
+                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            doctors.map((doctor, index) => <DoctorsTable
-                                key={doctor._id}
-                                doctor={doctor}
+                            equipments.map((equipment, index) => <DoctorsTable
+                                key={equipment._id}
+                                equipment={equipment}
                                 index={index}
                                 refetch={refetch}
-                                setDeletingDoctor={setDeletingDoctor}
+                                setDeletingEquipment={setDeletingEquipment}
                             ></DoctorsTable>)
                         }
                     </tbody>
                 </table>
             </div>
 
-            {deletingDoctor && <DeleteConfirmModal
-                deletingDoctor={deletingDoctor}
+            {deletingEquipment && <DeleteConfirmModal
+                deletingEquipment={deletingEquipment}
                 refetch={refetch}
-                setDeletingDoctor={setDeletingDoctor}
+                setDeletingEquipment={setDeletingEquipment}
+                equipments={equipments}
             ></DeleteConfirmModal>}
 
 
