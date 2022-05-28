@@ -9,7 +9,7 @@ const ManageAllOrders = () => {
     const [deletingEquipment, setDeletingEquipment] = useState(null);
 
     const { isLoading, refetch, data: bookings } = useQuery(['bookings'], () =>
-        fetch(`http://localhost:5000/booking`, {
+        fetch(`https://afternoon-sea-84552.herokuapp.com/booking`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -24,43 +24,43 @@ const ManageAllOrders = () => {
     return (
         <div>
 
-        <h2 className="text-2xl">Manage Orders: {bookings.length}</h2>
+            <h2 className="text-2xl">Manage Orders: {bookings.length}</h2>
 
-        <div className="overflow-x-auto">
-            <table className="table w-full">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>User</th>
-                        <th>Email</th>
-                        <th>Item Name</th>
-                        <th>Price</th>
-                        <th>Payment</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    {
-                        bookings.map((equipment, index) => <OrdersTable
-                            key={equipment._id}
-                            equipment={equipment}
-                            index={index}
-                            refetch={refetch}
-                            setDeletingEquipment={setDeletingEquipment}
-                        ></OrdersTable>)
-                    }
-                </tbody>
-            </table>
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Item Name</th>
+                            <th>Price</th>
+                            <th>Payment</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            bookings.map((equipment, index) => <OrdersTable
+                                key={equipment._id}
+                                equipment={equipment}
+                                index={index}
+                                refetch={refetch}
+                                setDeletingEquipment={setDeletingEquipment}
+                            ></OrdersTable>)
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            {deletingEquipment && <DeleteConfirmModalOrders
+                deletingEquipment={deletingEquipment}
+                refetch={refetch}
+                setDeletingEquipment={setDeletingEquipment}
+            ></DeleteConfirmModalOrders>}
+
+
         </div>
-
-        {deletingEquipment && <DeleteConfirmModalOrders
-            deletingEquipment={deletingEquipment}
-            refetch={refetch}
-            setDeletingEquipment={setDeletingEquipment}
-        ></DeleteConfirmModalOrders>}
-
-
-    </div>
     );
 };
 
