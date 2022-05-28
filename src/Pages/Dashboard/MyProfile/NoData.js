@@ -48,9 +48,9 @@ const NoData = () => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{user.displayName}</h2>
-           
+                <h4> email: {user.email}</h4>
                 <h4> education: Please Add Your Data</h4>
-                <h4> email: Please Add Your Data</h4>
+                
                 <h4> facebook: Please Add Your Data</h4>
                 <h4>linkedin: Please Add Your Data</h4>
                 <h4>location: Please Add Your Data</h4>
@@ -59,7 +59,7 @@ const NoData = () => {
 
                 <div className="card-actions">
 
-                <button className="btn btn-active btn-ghost"><Link to="/dashboard/addprofile" > addprofile </Link></button>
+                <button className="btn btn-active btn-ghost"><Link to="/dashboard/addprofile" > add data </Link></button>
 
                 </div>
             </div>

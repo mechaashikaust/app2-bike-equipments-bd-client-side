@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init'
 import { useForm } from "react-hook-form";
 import Loading from '../../Shared/Loading/Loading';
@@ -20,6 +20,12 @@ const Login = () => {
         googleError
     ] = useSignInWithGoogle(auth);
 
+    const [signInWithGithub, 
+        githubUser, 
+        githubLoading, 
+        githubError
+    ] = useSignInWithGithub(auth);
+
     const [
         signInWithEmailAndPassword,
         user,
@@ -27,7 +33,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [token] = useToken(user || googleUser);
+    const [token] = useToken(user || googleUser || githubUser);
 
     // const [
     //     sendPasswordResetEmail,
@@ -49,13 +55,13 @@ const Login = () => {
         }
     }, [token, from, navigate]);
 
-    if (loading || googleLoading) {
+    if (loading || googleLoading || githubLoading) {
         return <Loading></Loading>
     }
 
     let signInError;
 
-    if (error || googleError) {
+    if (error || googleError || githubError) {
         signInError = <p className='text-red-500'>{error?.message || googleError?.message}</p>
 
     }
@@ -172,6 +178,7 @@ const Login = () => {
                     <div className="divider">OR</div>
 
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">Continue With Google</button>
+                    <button onClick={() => signInWithGithub()} className="btn btn-outline">Continue With Github</button>
 
                 </div>
             </div>

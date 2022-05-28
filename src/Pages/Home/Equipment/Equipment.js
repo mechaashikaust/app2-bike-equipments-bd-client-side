@@ -12,7 +12,7 @@ const Equipment = ({ equipment }) => {
     return (
         <div className='equipment bg-secondary'>
             <img className='w-100' src={img} alt="" />
-            <h2>{name}</h2>
+            <h2 className='text-3xl font-bold text-accent text-center mt-5 py-5 mb-5'>{name}</h2>
             <p>Price: {price}</p>
             <p>Minimum Order: {minimumOrderQuantity}</p>
             <p>Available : {availableQuantity}</p>

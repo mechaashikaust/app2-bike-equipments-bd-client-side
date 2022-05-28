@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init'
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"; 
 import Loading from '../../Shared/Loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
@@ -20,6 +20,12 @@ const Registration = () => {
         googleError
     ] = useSignInWithGoogle(auth);
 
+    const [signInWithGithub, 
+        githubUser, 
+        githubLoading, 
+        githubError
+    ] = useSignInWithGithub(auth);
+
     const [
         createUserWithEmailAndPassword,
         user,
@@ -33,7 +39,7 @@ const Registration = () => {
         updateError
     ] = useUpdateProfile(auth);
 
-    const [token] = useToken(user || googleUser);
+    const [token] = useToken(user || googleUser || githubUser);
 
     const navigate = useNavigate();
 
@@ -43,13 +49,13 @@ const Registration = () => {
 
     }
 
-    if (loading || googleLoading || updating) {
+    if (loading || googleLoading || updating || githubLoading) {
         return <Loading></Loading>
     }
 
     let signInError;
 
-    if (error || googleError || updateError) {
+    if (error || googleError || updateError || githubError) {
         signInError = <p className='text-red-500'>{error?.message || googleError?.message || updateError?.message}</p>
     }
 
@@ -170,6 +176,7 @@ const Registration = () => {
                     <div className="divider">OR</div>
 
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">Continue With Google</button>
+                    <button onClick={() => signInWithGithub()} className="btn btn-outline">Continue With Github</button>
 
                 </div>
             </div>

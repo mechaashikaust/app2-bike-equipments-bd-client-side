@@ -23,6 +23,8 @@ import UpdateProfile from './Pages/Dashboard/MyProfile/UpdateProfile';
 import AddProfile from './Pages/Dashboard/MyProfile/AddProfile';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
 import MyEquipments from './Pages/Dashboard/MyEquipments';
+import Blog from './Pages/Blog/Blog';
+import NotFound from './Pages/Shared/NotFound/NotFound'
 
 function App() {
 
@@ -31,8 +33,9 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='/equipment/:equipmentId' element={<EquipmentDetail></EquipmentDetail>}></Route>
+        
         <Route path="about" element={<About />} />
+        <Route path="blog" element={<Blog />} />
 
         {/* <Route path="/updateequipment/:id" element=
           {
@@ -42,11 +45,11 @@ function App() {
           }
         ></Route> */}
 
-        {/* <Route path="appointment" element={
+        <Route path='/equipment/:equipmentId' element={
           <RequireAuth>
-            <Appointment />
+            <EquipmentDetail></EquipmentDetail>
           </RequireAuth>
-        } /> */}
+        } />
      
      
 
@@ -108,6 +111,7 @@ function App() {
 
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Registration />} />
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>
