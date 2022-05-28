@@ -1,71 +1,71 @@
-# Getting Started with Create React App
+# Welcome to Ashik Gym Equipments!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi! I'm **Md. ASHIKUR RAHMAN**. Here I created a website which was about **Gym Equipments**.
 
-## Available Scripts
+# Website Live Link
 
-In the project directory, you can run:
+[Ashik Gym Equipments](https://assignment-11-p-hero.web.app/)
 
-### `npm start`
+## Several Functionality Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **ReactJS** A Javascripty Library
+- **React-Router**
+- **React-Router Auth**
+- **FireBase**
+- **React-firebase-hooks**
+- **Bootstrap**
+- **React-Bootstrap**
+- **React Toastify**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Markdown extensions
 
-### `npm test`
+**ReactJS**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
+>
+> React code is made of entities called components.
+> React creates an in-memory data-structure cache, computes the resulting differences, and then updates the browser's displayed DOM efficiently.
+>
+> JSX, or JavaScript Syntax Extension, is an extension to the JavaScript language syntax. Similar in appearance to HTML, JSX provides a way to structure component rendering using syntax familiar to many developers. React components are typically written using JSX, although they do not have to be (components may also be written in pure JavaScript).
+>
+> Hooks are functions that let developers "hook into" React state and lifecycle features from function components. Hooks do not work inside classes — they let you use React without classes. React provides a few built-in hooks like useState, useContext, useReducer , useMemo and useEffect. Others are documented in the Hooks API Reference.useState and useEffect, which are the most commonly used, are for controlling state and side effects respectively.
 
-### `npm run build`
+**React-Router**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Routing is a process in which a user is directed to different pages based on their action or request. ReactJS Router is mainly used for developing Single Page Web Applications. React Router is used to define multiple routes in the application. When a user types a specific URL into the browser, and if this URL path matches any 'route' inside the router file, the user will be redirected to that particular route.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**React-Router Auth**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> When building a commercial web app or a website in React, we often need to hide certain routes in our application from users who are not logged in or do not have a certain user role required to access those routes.
+> React router provides us with protected routes; they let us choose which routes users can visit based on their user roles or whether they are logged in or not.
 
-### `npm run eject`
+**FireBase**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+> **Firebase** is a Backend-as-a-Service (Baas). It provides developers with a variety of tools and services to help them develop quality apps
+>
+> #### Key Features
+>
+> #### 1. Authentication
+>
+> It supports authentication using passwords, phone numbers, Google, Facebook, Twitter, and more. The Firebase Authentication (SDK) can be used to manually integrate one or more sign-in methods into an app.
+>
+> #### 2. Realtime database
+>
+> Data is synced across all clients in realtime and remains available even when an app goes offline.
+>
+> #### 3. Hosting
+>
+> Firebase Hosting provides fast hosting for a web app; content is cached into content delivery networks worldwide.
+>
+> #### 4. Test lab
+>
+> The application is tested on virtual and physical devices located in Google’s data centers.
+>
+> #### 5. Notifications
+>
+> Notifications can be sent with firebase with no additional coding.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**React-firebase-hooks**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> This is a library which explores how React Hooks can work to make integration with Firebase even more straightforward than it already is. It takes inspiration for naming from RxFire and is based on an internal library that we had been using in a number of apps prior to the release of React Hooks. The implementation with hooks is 10x simpler than our previous implementation.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# manufacturer-website-client-side-mechaashikaust" 
