@@ -16,7 +16,7 @@ const UpdateProfile = () => {
 
     // {8} Add Doctors data getting
 
-    // const { data: profiles, isLoading, } = useQuery('profiles', () => fetch('http://localhost:5000/profile')
+    // const { data: profiles, isLoading, } = useQuery('profiles', () => fetch('https://afternoon-sea-84552.herokuapp.com/profile')
     //     .then(res => res.json())
     // )
 
@@ -29,7 +29,7 @@ const UpdateProfile = () => {
         * 
         * YUP: to validate file: Search: Yup file validation for react hook form
     */
-     
+
     const imageStorageKey = "abd1d4a0b3f8dc39667d0ee7a0fba1d0";
 
     const onSubmit = async data => {
@@ -62,7 +62,7 @@ const UpdateProfile = () => {
                     }
 
                     // Send to your DB
-                    fetch(`http://localhost:5000/profile/${id}`, {
+                    fetch(`https://afternoon-sea-84552.herokuapp.com/profile/${id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',
@@ -109,7 +109,7 @@ const UpdateProfile = () => {
                         value={user.displayName}
                         disabled
                     />
-                    
+
                     <label className="label">
                         <span className="label-text">Email</span>
 

@@ -17,7 +17,7 @@ const CheckoutForm = ({ appointment }) => {
 
         // {13} Calculate Order Amount
 
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://afternoon-sea-84552.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -46,7 +46,7 @@ const CheckoutForm = ({ appointment }) => {
         if (card === null) {
             return;
         }
- 
+
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card
@@ -89,7 +89,7 @@ const CheckoutForm = ({ appointment }) => {
 
             // {13} Payment Updating
 
-            fetch(`http://localhost:5000/booking/${_id}`, {
+            fetch(`https://afternoon-sea-84552.herokuapp.com/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

@@ -13,7 +13,7 @@ const ManageEquipments = () => {
 
     // {10} Getting all Doctors 
 
-    const { data: equipments, isLoading, refetch } = useQuery('equipments', () => fetch('http://localhost:5000/equipment', {
+    const { data: equipments, isLoading, refetch } = useQuery('equipments', () => fetch('https://afternoon-sea-84552.herokuapp.com/equipment', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

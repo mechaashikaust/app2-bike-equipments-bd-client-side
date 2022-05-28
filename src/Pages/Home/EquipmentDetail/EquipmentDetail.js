@@ -16,7 +16,7 @@ const EquipmentDetail = () => {
     const { equipmentId } = useParams();
 
     const { isLoading, refetch, data: equipment } = useQuery(['equipment', equipmentId], () =>
-        fetch(`http://localhost:5000/equipment/${equipmentId}`)
+        fetch(`https://afternoon-sea-84552.herokuapp.com/equipment/${equipmentId}`)
             .then(res => res.json())
     )
     if (isLoading) return <Loading></Loading>
@@ -33,7 +33,7 @@ const EquipmentDetail = () => {
         const uupdatedUser = { minimumOrderQuantity };
 
         // send data to the server
-        const url = `http://localhost:5000/equipment/${equipmentId}`
+        const url = `https://afternoon-sea-84552.herokuapp.com/equipment/${equipmentId}`
         fetch(url, {
             method: 'PUT', // or 'PUT'
             headers: {
@@ -94,7 +94,7 @@ const EquipmentDetail = () => {
             address: event.target.address.value
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://afternoon-sea-84552.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

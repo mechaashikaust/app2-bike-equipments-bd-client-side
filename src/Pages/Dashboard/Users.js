@@ -4,17 +4,17 @@ import Loading from '../Shared/Loading/Loading';
 import UsersTable from './UsersTable';
 
 const Users = () => {
- 
+
 
     // {5} get All Users
     const { isLoading, refetch, data: users } = useQuery(['users'], () =>
-        fetch(`http://localhost:5000/user`, {
+        fetch(`https://afternoon-sea-84552.herokuapp.com/user`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json()) 
+            .then(res => res.json())
     )
     if (isLoading) return <Loading></Loading>
 

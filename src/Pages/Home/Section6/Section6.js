@@ -10,11 +10,11 @@ import Review from './Review';
 const Section6 = () => {
 
     const { isLoading, refetch, data: reviews } = useQuery(['review'], () =>
-    fetch(`http://localhost:5000/review`)
-        .then(res => res.json())
-)
+        fetch(`https://afternoon-sea-84552.herokuapp.com/review`)
+            .then(res => res.json())
+    )
 
-if (isLoading) return <Loading></Loading>
+    if (isLoading) return <Loading></Loading>
     return (
         <section className='my-28'>
 
@@ -31,8 +31,8 @@ if (isLoading) return <Loading></Loading>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     reviews.map(review => <Review
-                    key={review._id}
-                    review={review}
+                        key={review._id}
+                        review={review}
                     ></Review>)
                 }
             </div>

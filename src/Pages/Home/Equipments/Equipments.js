@@ -7,15 +7,15 @@ import './Equipments.css'
 const Equipments = () => {
 
     // const [equipments, setEquipments] = useState([]);
- 
+
     // useEffect(() => {
-    //     fetch('http://localhost:5000/equipment')
+    //     fetch('https://afternoon-sea-84552.herokuapp.com/equipment')
     //         .then(res => res.json())
     //         .then(data => setEquipments(data));
     // }, []);
 
     const { isLoading, refetch, data: equipments } = useQuery(['equipment'], () =>
-        fetch(`http://localhost:5000/equipment`)
+        fetch(`https://afternoon-sea-84552.herokuapp.com/equipment`)
             .then(res => res.json())
     )
     if (isLoading) return <Loading></Loading>
@@ -27,7 +27,7 @@ const Equipments = () => {
                 <h1 className='text-4xl bg-secondary font-bold text-accent text-center mt-5 py-5 mb-5'>Equipments</h1>
                 <div className='equipments-container'>
                     {
-                        equipments.slice(0,6).map(equipment => <Equipment
+                        equipments.slice(0, 6).map(equipment => <Equipment
 
                             key={equipment._id}
                             equipment={equipment}

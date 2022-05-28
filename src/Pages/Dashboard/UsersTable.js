@@ -9,7 +9,7 @@ const UsersTable = ({ user, index, refetch }) => {
 
         // {6} Admin
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://afternoon-sea-84552.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -23,7 +23,7 @@ const UsersTable = ({ user, index, refetch }) => {
             })
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    refetch(); 
+                    refetch();
                     toast.success('Successfully made an Admin');
                 }
             })
@@ -44,7 +44,7 @@ const UsersTable = ({ user, index, refetch }) => {
                         <button className="btn btn-sm btn-primary font-bold">Admin</button>
                 }
             </td>
-            
+
 
 
         </tr>

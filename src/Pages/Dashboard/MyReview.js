@@ -10,7 +10,7 @@ const MyReview = () => {
 
     // {8} Add Doctors data getting
 
-    const { data: equipments, isLoading, } = useQuery('equipments', () => fetch('http://localhost:5000/equipment')
+    const { data: equipments, isLoading, } = useQuery('equipments', () => fetch('https://afternoon-sea-84552.herokuapp.com/equipment')
         .then(res => res.json())
     )
 
@@ -51,7 +51,7 @@ const MyReview = () => {
         //             }
 
         //             // Send to your DB
-        //             fetch('http://localhost:5000/review', {
+        //             fetch('https://afternoon-sea-84552.herokuapp.com/review', {
         //                 method: 'POST',
         //                 headers: {
         //                     'content-type': 'application/json',
@@ -72,7 +72,7 @@ const MyReview = () => {
         //         }
         //     })
 
-        const url = `http://localhost:5000/review`;
+        const url = `https://afternoon-sea-84552.herokuapp.com/review`;
         fetch(url, {
             method: 'POST',
             headers: {

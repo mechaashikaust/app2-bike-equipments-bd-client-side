@@ -7,7 +7,7 @@ const DeleteConfirmModalManageEquipments = ({ deletingEquipment, refetch, setDel
 
     const handleDelete = (id) => {
 
-        const url = `http://localhost:5000/equipment/${id}`;
+        const url = `https://afternoon-sea-84552.herokuapp.com/equipment/${id}`;
 
         fetch(url, {
             method: 'DELETE',

@@ -13,7 +13,7 @@ const NoData = () => {
 
     //         // {4} My Appointemnts with verifying JWT
 
-    //         fetch(`http://localhost:5000/profile?email=${user.email}`, {
+    //         fetch(`https://afternoon-sea-84552.herokuapp.com/profile?email=${user.email}`, {
     //             method: 'GET',
     //             headers: {
     //                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -38,36 +38,36 @@ const NoData = () => {
     // }, [user]);
 
 
-    return ( 
+    return (
         <div>
 
 
-        <div className="card w-96 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                {/* <img src={img} alt="Shoes" className="rounded-xl" /> */}
-            </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">{user.displayName}</h2>
-                <h4> email: {user.email}</h4>
-                <h4> education: Please Add Your Data</h4>
-                
-                <h4> facebook: Please Add Your Data</h4>
-                <h4>linkedin: Please Add Your Data</h4>
-                <h4>location: Please Add Your Data</h4>
-                <h4>phone: Please Add Your Data</h4>
-                <h4>zipcode: Please Add Your Data</h4>
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10">
+                    {/* <img src={img} alt="Shoes" className="rounded-xl" /> */}
+                </figure>
+                <div className="card-body items-center text-center">
+                    <h2 className="card-title">{user.displayName}</h2>
+                    <h4> email: {user.email}</h4>
+                    <h4> education: Please Add Your Data</h4>
 
-                <div className="card-actions">
+                    <h4> facebook: Please Add Your Data</h4>
+                    <h4>linkedin: Please Add Your Data</h4>
+                    <h4>location: Please Add Your Data</h4>
+                    <h4>phone: Please Add Your Data</h4>
+                    <h4>zipcode: Please Add Your Data</h4>
 
-                <button className="btn btn-active btn-ghost"><Link to="/dashboard/addprofile" > add data </Link></button>
+                    <div className="card-actions">
 
+                        <button className="btn btn-active btn-ghost"><Link to="/dashboard/addprofile" > add data </Link></button>
+
+                    </div>
                 </div>
             </div>
+
+
+
         </div>
-
-
-
-    </div>
     );
 };
 

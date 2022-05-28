@@ -9,7 +9,7 @@ const useAdmin = user => {
 
             // {7} Checking that are you admin or not
 
-            fetch(`http://localhost:5000/admin/${email}`, {
+            fetch(`https://afternoon-sea-84552.herokuapp.com/admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

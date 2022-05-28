@@ -14,7 +14,7 @@ const Payment = () => {
 
     // {12} Get data for Payment route for a specific id.
 
-    const url = `http://localhost:5000/booking/${id}`; 
+    const url = `https://afternoon-sea-84552.herokuapp.com/booking/${id}`;
 
     const { data: equipment, isLoading } = useQuery(['booking', id], () => fetch(url, {
         method: 'GET',

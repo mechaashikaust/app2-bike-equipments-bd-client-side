@@ -7,17 +7,17 @@ const Section3 = () => {
 
 
     const { isLoading, refetch, data: reviews } = useQuery(['review'], () =>
-        fetch(`http://localhost:5000/review`)
+        fetch(`https://afternoon-sea-84552.herokuapp.com/review`)
             .then(res => res.json())
     )
     if (isLoading) return <Loading></Loading>
 
-console.log(reviews); 
+    console.log(reviews);
     return (
         <div>
 
             {
-                reviews.map((review,index) => <ReviewsSection
+                reviews.map((review, index) => <ReviewsSection
 
                     key={review._id}
                     review={review}

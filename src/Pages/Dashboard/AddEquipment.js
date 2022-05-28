@@ -10,7 +10,7 @@ const AddEquipment = () => {
 
     // {8} Add Doctors data getting
 
-    const { data: equipments, isLoading, } = useQuery('equipments', () => fetch('http://localhost:5000/equipment')
+    const { data: equipments, isLoading, } = useQuery('equipments', () => fetch('https://afternoon-sea-84552.herokuapp.com/equipment')
         .then(res => res.json())
     )
 
@@ -53,7 +53,7 @@ const AddEquipment = () => {
                     }
 
                     // Send to your DB
-                    fetch('http://localhost:5000/equipment', {
+                    fetch('https://afternoon-sea-84552.herokuapp.com/equipment', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

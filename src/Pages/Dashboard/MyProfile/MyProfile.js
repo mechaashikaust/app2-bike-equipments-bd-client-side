@@ -15,7 +15,7 @@ const MyProfile = () => {
     const navigate = useNavigate();
 
 
-    // const { data: profiles, isLoading } = useQuery('profiles', () => fetch(`http://localhost:5000/profile?email=${user.email}`)
+    // const { data: profiles, isLoading } = useQuery('profiles', () => fetch(`https://afternoon-sea-84552.herokuapp.com/profile?email=${user.email}`)
     //     .then(res => res.json())
     // )
 
@@ -29,7 +29,7 @@ const MyProfile = () => {
 
             // {4} My Appointemnts with verifying JWT
 
-            fetch(`http://localhost:5000/profile?email=${user.email}`, {
+            fetch(`https://afternoon-sea-84552.herokuapp.com/profile?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

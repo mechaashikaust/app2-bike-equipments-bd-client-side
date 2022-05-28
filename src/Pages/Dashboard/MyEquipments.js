@@ -18,7 +18,7 @@ const MyEquipments = () => {
 
             // {4} My Appointemnts with verifying JWT
 
-            fetch(`http://localhost:5000/booking?email=${user.email}`, {
+            fetch(`https://afternoon-sea-84552.herokuapp.com/booking?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const MyEquipments = () => {
     }, [user]);
 
 
-    // const { data: equipments, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/equipment', {
+    // const { data: equipments, isLoading, refetch } = useQuery('doctors', () => fetch('https://afternoon-sea-84552.herokuapp.com/equipment', {
     //     headers: {
     //         authorization: `Bearer ${localStorage.getItem('accessToken')}`
     //     }
@@ -60,7 +60,7 @@ const MyEquipments = () => {
             <h2>MyAppointments: {myequipments.length}</h2>
 
             <div className="overflow-x-auto">
-                <table className="table w-full"> 
+                <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>
@@ -106,7 +106,7 @@ const MyEquipments = () => {
                         }
                         {deletingEquipment && <DeleteConfirmModalMyEquipments
                             deletingEquipment={deletingEquipment}
-                           
+
                             setDeletingEquipment={setDeletingEquipment}
                         ></DeleteConfirmModalMyEquipments>}
 

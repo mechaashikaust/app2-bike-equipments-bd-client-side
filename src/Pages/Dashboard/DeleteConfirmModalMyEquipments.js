@@ -4,10 +4,10 @@ import { toast } from 'react-toastify';
 const DeleteConfirmModalMyEquipments = ({ deletingEquipment, setDeletingEquipment }) => {
     const { name, _id } = deletingEquipment;
 
- 
+
     const handleDelete = (id) => {
 
-        const url = `http://localhost:5000/booking/${id}`;
+        const url = `https://afternoon-sea-84552.herokuapp.com/booking/${id}`;
 
         fetch(url, {
             method: 'DELETE',
@@ -30,7 +30,7 @@ const DeleteConfirmModalMyEquipments = ({ deletingEquipment, setDeletingEquipmen
                     toast('Successfully Deleted Equipment');
                     setDeletingEquipment(null);
                 }
-console.log(result);
+                console.log(result);
 
             });
 
