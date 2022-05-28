@@ -2,8 +2,6 @@ import React from 'react';
 import Equipments from '../Equipments/Equipments';
 import Section1 from '../Section1/Section1';
 
-import Section4 from '../Section4/Section4';
-
 import Section6 from '../Section6/Section6';
 import Section7 from '../Section7/Section7';
 import Footer from '../../Shared/Footer/Footer'
@@ -25,7 +23,7 @@ const Home = () => {
 
             <Section1></Section1>
         
-            <Section4></Section4>
+            
        
             <Section6></Section6>
 

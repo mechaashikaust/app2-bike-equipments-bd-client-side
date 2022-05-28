@@ -1,17 +1,16 @@
 import React from 'react';
-import chair from '../../../assets/images/chair.png'
-import Button from '../../Shared/Button/Button';
+import image from '../../../images/bike-parts.jpg'
 
 const Section1 = () => {
     return (
-        <div className="hero min-h-screen bg-[url('/src/assets/images/bg.png')] bg-no-repeat bg-contain bg-left-top
+        <div className="hero min-h-screen
         ">
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={chair} className="max-w-lg rounded-lg shadow-2xl" />
+                <img src={image} className="max-w-lg rounded-lg shadow-2xl" />
                 <div>
-                    <h1 className="text-5xl font-bold">Welcome to Doctors Portal!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <Button>Get Started</Button>
+                    <h1 className="text-5xl font-bold">Best Manufacturing Place for your Valuable Bike Parts!</h1>
+                    <p className="py-6">We’ve been Selling Genuine Motorcycle Parts and Accessories for the last 3 years. We present The Best Shopping site to Buy Motorcycle Parts online in Bangladesh. If you choose our website for Buy Motorcycle Parts you not mistaken, and we always treat customers with respect.</p>
+                  
                 </div>
             </div>
         </div>
