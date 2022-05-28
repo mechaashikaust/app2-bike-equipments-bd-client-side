@@ -28,7 +28,7 @@ const ManageEquipments = () => {
     return (
         <div>
 
-            <h2 className="text-2xl">Manage Doctors: {equipments.length}</h2>
+            <h2 className="text-2xl">Manage Equipments: {equipments.length}</h2>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">

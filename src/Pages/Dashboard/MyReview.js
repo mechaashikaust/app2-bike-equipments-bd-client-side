@@ -103,7 +103,7 @@ const MyReview = () => {
 
     return (
         <div>
-            <h2 className='text-2xl'>Add a new User</h2>
+            <h2 className='text-2xl'>Add Review</h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>
 

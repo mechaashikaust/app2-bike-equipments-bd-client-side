@@ -80,11 +80,11 @@ const AddEquipment = () => {
 
     return (
         <div>
-            <h2 className='text-2xl'>Add a new User</h2>
+            <h2 className='text-2xl'>Add a new Equipment</h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-xs ">
 
 
 
