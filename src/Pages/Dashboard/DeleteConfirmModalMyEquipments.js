@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeleteConfirmModalMyEquipments = ({ deletingEquipment, setDeletingEquipment }) => {
     const { name, _id } = deletingEquipment;
 
-
+ 
     const handleDelete = (id) => {
 
         const url = `http://localhost:5000/booking/${id}`;

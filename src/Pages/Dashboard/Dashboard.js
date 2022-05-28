@@ -18,7 +18,7 @@ const Dashboard = () => {
 
                 <Outlet></Outlet>
 
- 
+
 
             </div>
             <div className="drawer-side">
@@ -27,15 +27,28 @@ const Dashboard = () => {
 
                     {/* <!-- Sidebar content here --> */}
 
-                    <li><Link to="/dashboard">My Orders</Link></li>
-                    <li><Link to="/dashboard/review">My Reviews</Link></li>
+                    <li><Link to="/dashboard">My Profile</Link></li>
+
+
                     {
-                        admin && 
+                        !admin &&
                         <>
-                        
-                        <li><Link to="/dashboard/users">All Users</Link></li>
-                        <li><Link to="/dashboard/addDoctor">Add an Equipment</Link></li>
-                        <li><Link to="/dashboard/manageDoctor">Manage Equipments</Link></li>
+
+                            <li><Link to="/dashboard/orders">My Orders</Link></li>
+                            <li><Link to="/dashboard/review">Add Reviews</Link></li>
+
+                        </>
+                    }
+
+
+                    {
+                        admin &&
+                        <>
+
+                            <li><Link to="/dashboard/manageallorders">Manage All Orders</Link></li>
+                            <li><Link to="/dashboard/users">Make Admin</Link></li>
+                            <li><Link to="/dashboard/addequipment">Add an Equipment</Link></li>
+                            <li><Link to="/dashboard/manageDoctor">Manage Equipments</Link></li>
 
                         </>
                     }

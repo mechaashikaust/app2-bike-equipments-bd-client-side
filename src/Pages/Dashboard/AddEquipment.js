@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading/Loading';
 
-const AddDoctor = () => { 
+const AddEquipment = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
@@ -14,7 +14,7 @@ const AddDoctor = () => {
         .then(res => res.json())
     )
 
-
+ 
     /**
         * 3 ways to store images
         * 1. Third party storage //Free open public storage is ok for Practice project 
@@ -107,7 +107,7 @@ const AddDoctor = () => {
                     {/***************Name INPUT FIELD END*/}
 
 
-                    
+
                     {/***************Price INPUT FIELD START*****Daijy + React Form************/}
                     <label className="label">
                         <span className="label-text">Price</span>
@@ -156,7 +156,7 @@ const AddDoctor = () => {
                         {errors.minimumOrderQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.minimumOrderQuantity.message}</span>}
                     </label>
                     {/***************Minimum Order Quantity INPUT FIELD END*/}
-                   
+
                     {/***************Available Order Quantity INPUT FIELD START*****Daijy + React Form************/}
                     <label className="label">
                         <span className="label-text">Available Quantity</span>
@@ -183,7 +183,7 @@ const AddDoctor = () => {
                     {/***************Available Order Quantity INPUT FIELD END*/}
 
 
-                   
+
                     {/***************Description INPUT FIELD START*****Daijy + React Form************/}
                     <label className="label">
                         <span className="label-text">Description</span>
@@ -246,4 +246,4 @@ const AddDoctor = () => {
     );
 };
 
-export default AddDoctor;
+export default AddEquipment;

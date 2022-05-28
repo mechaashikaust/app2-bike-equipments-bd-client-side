@@ -44,7 +44,7 @@ const UsersTable = ({ user, index, refetch }) => {
                         <button className="btn btn-sm btn-primary font-bold">Admin</button>
                 }
             </td>
-            <td><button className="btn btn-xs">Remove User</button></td>
+            
 
 
         </tr>
