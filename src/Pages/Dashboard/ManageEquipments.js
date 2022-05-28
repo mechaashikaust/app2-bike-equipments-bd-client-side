@@ -41,7 +41,7 @@ const ManageEquipments = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> 
                         {
                             equipments.map((equipment, index) => <EquipmentsTable
                                 key={equipment._id}

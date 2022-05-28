@@ -303,7 +303,7 @@ const UpdateProfile = () => {
                 </div>
 
 
-                <input className='btn w-full max-w-xs mt-4 text-white font-bold' type="submit" value="Add" />
+                <input className='btn w-full max-w-xs mt-4 text-white font-bold' type="submit" value="update" />
 
             </form>
 

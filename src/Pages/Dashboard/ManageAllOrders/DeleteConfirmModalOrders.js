@@ -1,13 +1,13 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const DeleteConfirmModalManageEquipments = ({ deletingEquipment, refetch, setDeletingEquipment }) => {
+const DeleteConfirmModalOrders = ({ deletingEquipment, refetch, setDeletingEquipment }) => {
     const { name, _id } = deletingEquipment;
 
 
     const handleDelete = (id) => {
 
-        const url = `https://afternoon-sea-84552.herokuapp.com/equipment/${id}`;
+        const url = `http://localhost:5000/equipment/${id}`;
 
         fetch(url, {
             method: 'DELETE',
@@ -54,4 +54,4 @@ const DeleteConfirmModalManageEquipments = ({ deletingEquipment, refetch, setDel
     );
 };
 
-export default DeleteConfirmModalManageEquipments;
+export default DeleteConfirmModalOrders;

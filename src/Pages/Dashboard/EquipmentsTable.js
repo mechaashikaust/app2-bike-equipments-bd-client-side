@@ -4,7 +4,7 @@ const EquipmentsTable = ({ equipment, index, refetch, setDeletingEquipment }) =>
     const { name, price, img } = equipment;
 
     return (
-        <tr>
+        <tr> 
             <th>{index + 1}</th>
 
             <td><div className="avatar">
